@@ -28,10 +28,12 @@ namespace vuoropohjainen_taistelu.Hahmot
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Sait {0} kokemusta.", exp);
             Exp = Exp + exp;
+            Console.ReadKey(true);
             if (Exp >= 5)
             {
-                Console.WriteLine("Nousit tasolle 2.");
+                Console.Write("Nousit tasolle 2.");
                 Taso++;
+                Console.ReadKey(true);
                 Console.ResetColor();
                 Taidonnosto();
             }
@@ -40,6 +42,7 @@ namespace vuoropohjainen_taistelu.Hahmot
 
         static public void Taidonnosto()
         {
+            Console.Clear();
             Hahmo pelaaja = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja");
             ConsoleKeyInfo nappiInfo;
             do
@@ -55,21 +58,38 @@ namespace vuoropohjainen_taistelu.Hahmot
             {
                 Console.Clear();
                 pelaaja.Str++;
-                Console.WriteLine("Voimaa nostettu, STR {0}", pelaaja.Str);
+                Console.WriteLine("\nVoimaa nostettu.");
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("STR {0}", pelaaja.Str);
+                Console.ResetColor();
+                Console.WriteLine("DEX {0}\nDEF {1}", pelaaja.Dex, pelaaja.Def);
+                
             }
             if (nappiInfo.Key == ConsoleKey.D2)
             {
                 Console.Clear();
                 pelaaja.Dex++;
-                Console.WriteLine("Nopeutta nostettu, DEX {0}", pelaaja.Dex);
+                Console.WriteLine("\nNopeutta nostettu");
+                
+                Console.WriteLine("STR {0}", pelaaja.Str);                
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("DEX {0}", pelaaja.Dex);
+                Console.ResetColor();
+                Console.WriteLine("DEF {0}", pelaaja.Def);
 
             }
             if (nappiInfo.Key == ConsoleKey.D3)
             {
                 Console.Clear();
                 pelaaja.Def++;
-                Console.WriteLine("Puolustusta nostettu, DEF {0}", pelaaja.Def);
-
+                Console.WriteLine("\nPuolustusta nostettu");
+                Console.WriteLine("STR {0}\nDEX {1}", pelaaja.Str, pelaaja.Dex);
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("DEF {0}", pelaaja.Def);
+                Console.ResetColor();
             }
         }
 

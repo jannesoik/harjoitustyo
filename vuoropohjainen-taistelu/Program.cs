@@ -50,8 +50,6 @@ namespace vuoropohjainen_taistelu
                         Vuoromanageri.PelaajanVuoro(pelaaja1, Areena.LuurankoLista[0]);
                         Console.ReadKey(true);
                     }
-                    
-                    Console.WriteLine("\n***\n");                    
                 }
                 else // pelaaja aloittaa
                 {
