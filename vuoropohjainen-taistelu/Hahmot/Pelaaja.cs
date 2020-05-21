@@ -61,9 +61,9 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.WriteLine("\nVoimaa nostettu.");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("STR {0}", pelaaja.Str);
+                Console.WriteLine("   STR {0}", pelaaja.Str);
                 Console.ResetColor();
-                Console.WriteLine("DEX {0}\nDEF {1}", pelaaja.Dex, pelaaja.Def);
+                Console.WriteLine("   DEX {0}\n   DEF {1}", pelaaja.Dex, pelaaja.Def);
                 
             }
             if (nappiInfo.Key == ConsoleKey.D2)
@@ -72,23 +72,23 @@ namespace vuoropohjainen_taistelu.Hahmot
                 pelaaja.Dex++;
                 Console.WriteLine("\nNopeutta nostettu");
                 
-                Console.WriteLine("STR {0}", pelaaja.Str);                
+                Console.WriteLine("   STR {0}", pelaaja.Str);                
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("DEX {0}", pelaaja.Dex);
+                Console.WriteLine("   DEX {0}", pelaaja.Dex);
                 Console.ResetColor();
-                Console.WriteLine("DEF {0}", pelaaja.Def);
+                Console.WriteLine("   DEF {0}", pelaaja.Def);
 
             }
             if (nappiInfo.Key == ConsoleKey.D3)
             {
                 Console.Clear();
                 pelaaja.Def++;
-                Console.WriteLine("\nPuolustusta nostettu");
-                Console.WriteLine("STR {0}\nDEX {1}", pelaaja.Str, pelaaja.Dex);
+                Console.WriteLine("\n1Puolustusta nostettu");
+                Console.WriteLine("   STR {0}\n   DEX {1}", pelaaja.Str, pelaaja.Dex);
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("DEF {0}", pelaaja.Def);
+                Console.WriteLine("   DEF {0}", pelaaja.Def);
                 Console.ResetColor();
             }
         }
