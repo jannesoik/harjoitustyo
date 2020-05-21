@@ -1,0 +1,7 @@
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\bin\Debug\vuoropohjainen-taistelu.exe.config
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\bin\Debug\vuoropohjainen-taistelu.exe
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\bin\Debug\vuoropohjainen-taistelu.pdb
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\obj\Debug\vuoropohjainen-taistelu.csprojAssemblyReference.cache
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\obj\Debug\vuoropohjainen-taistelu.csproj.CoreCompileInputs.cache
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\obj\Debug\vuoropohjainen-taistelu.exe
+C:\Users\Janne\Google Drive\koulu\amk\koodipaja\harjoitustyö\vuoropohjainen\vuoropohjainen-taistelu\obj\Debug\vuoropohjainen-taistelu.pdb
