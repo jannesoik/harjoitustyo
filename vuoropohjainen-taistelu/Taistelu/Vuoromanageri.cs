@@ -17,7 +17,7 @@ namespace vuoropohjainen_taistelu.Taistelu
             for (int i = 0; i < järjestettyLista.Count; i++)
             {
                 if(järjestettyLista[i]!=null)
-                    Console.WriteLine((i+1)+". vuorossa "+järjestettyLista[i].Nimi + ", Dex: " + järjestettyLista[i].Dex);
+                    Console.WriteLine((i+1)+". vuorossa "+järjestettyLista[i].Nimi/* + ", Dex: " + järjestettyLista[i].Dex*/);
             }
             return järjestettyLista[0];
         }
@@ -45,8 +45,10 @@ namespace vuoropohjainen_taistelu.Taistelu
 
         public static void PelaajanVuoro(Hahmo pelaaja, Hahmo vihollinen)
         {
-            if (pelaaja.Puolustautunut)            
-                pelaaja.LaskePuolustus();
+            if (pelaaja.Puolustautunut)
+            {
+                pelaaja.LaskePuolustus(); 
+            }
 
             //Console.WriteLine("pelaajan str{0}, dex {1}, def {2} ", pelaaja.Str, pelaaja.Dex, pelaaja.Def);
             ConsoleKeyInfo nappiInfo;

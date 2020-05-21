@@ -16,14 +16,24 @@ namespace vuoropohjainen_taistelu.Hahmot
         public int Def;
         public bool Kuollut;
         public bool Puolustautunut;
-
+        int puolustusDef;
 
         public void MenetäHPtä(int vahinko)
         {
             Hp = Hp - vahinko;
             if (Hp <= 0)
             {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
+                if (Nimi.Contains("laaja"))
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                }
+                
                 Console.WriteLine("\n"+Nimi + " kuoli.");
                 Console.ResetColor();
 
@@ -37,14 +47,14 @@ namespace vuoropohjainen_taistelu.Hahmot
 
         public int Hyökkää(int puolustajanDef)
         {
-            int vahinko = this.Str - puolustajanDef;
+            Random arvonta = new Random();
+            int vahinkoKerroin = arvonta.Next(1,3);
+            int vahinko = (Str*vahinkoKerroin) - puolustajanDef;
             if (vahinko < 1)
                 vahinko = 1;            
-            Console.Write("{0} hyökkäsi ja teki ", Nimi);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write(vahinko);
-            Console.ResetColor();
-            Console.Write(" vahinkoa");
+            Console.Write("{0} hyökkäsi ja teki ", Nimi);            
+            VahinkoVäri(vahinko);
+            Console.Write(" vahinkoa ("+ puolustajanDef+" vastustettu)");
             return vahinko;
         }
 
@@ -62,15 +72,42 @@ namespace vuoropohjainen_taistelu.Hahmot
 
         public void Puolusta()
         {
-            Def = Def + 2;
+            Random arvonta = new Random();
+            int arpaNro = arvonta.Next(1,3);
+            puolustusDef = arpaNro + Def;
+            Def = Def+puolustusDef;
             Dex = Dex + 1;
             Puolustautunut = true;
         }
         public void LaskePuolustus()
-        {
-            Def = Def - 2;
+        {            
+            Def = Def -puolustusDef;
             Dex = Dex - 1;
             Puolustautunut = false;
+        }
+
+        public void VahinkoVäri(int vahinko)
+        {
+            if (vahinko >= 10)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(vahinko);
+                Console.ResetColor();
+            }else if (vahinko > 5)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(vahinko);
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(vahinko);
+                Console.ResetColor();
+            }
         }
     }
 }

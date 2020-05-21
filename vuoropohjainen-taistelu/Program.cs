@@ -24,15 +24,18 @@ namespace vuoropohjainen_taistelu
                     break;
                 }
                 Console.Clear();
-                Console.WriteLine("Kierros {0}\nAreenalla:", (j + 1));
+                Console.Write("KIERROS {0}\nAreenalla:", (j + 1));
                 for (int k = 0; k < Areena.Areenalista.Count(); k++)
                 {
                     if (Areena.Areenalista[k] != null)
                     {
                         Console.Write("\n"+Areena.Areenalista[k].Nimi+", HP: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(Areena.Areenalista[k].Hp);
+                        Console.Write(Areena.Areenalista[k].Hp/* +", def: "+ Areena.Areenalista[k].Def*/);
                         Console.ResetColor();
+                        if (Areena.Areenalista[k].Puolustautunut)
+                            Console.WriteLine(" [puolustautuu]");
+
                     }
                 }
                 Console.WriteLine();
@@ -48,7 +51,7 @@ namespace vuoropohjainen_taistelu
                     if (pelaaja1.Kuollut == false)
                     {
                         Vuoromanageri.PelaajanVuoro(pelaaja1, Areena.LuurankoLista[0]);
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                     
                     Console.WriteLine("\n***\n");                    
