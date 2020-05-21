@@ -15,13 +15,13 @@ namespace vuoropohjainen_taistelu.Taistelu
         public static void LuoLuuranko()
         {
             int listaNro = LuurankoLista.Count();
-            LuurankoLista.Add(new Luuranko("Luuranko "+listaNro+1, 15, 6, 6, 2));
+            LuurankoLista.Add(new Luuranko("Luuranko "+listaNro+1, 15, 6, 6, 2, 25));
             Areenalista.Add(LuurankoLista[listaNro]);
             
         }
         public static void LuoUusiPelaaja()
         {
-            Areenalista.Add(new Pelaaja("Pelaaja", 25, 10, 5, 2));
+            Areenalista.Add(new Pelaaja("Pelaaja", 25, 10, 5, 2,25));
         }
 
         public static void PoistaLuuranko()

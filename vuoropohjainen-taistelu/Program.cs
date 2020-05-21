@@ -24,21 +24,18 @@ namespace vuoropohjainen_taistelu
                     break;
                 }
                 Console.Clear();
-                Console.Write("KIERROS {0}\nAreenalla:", (j + 1));
+                Console.Write("KIERROS {0}\n\nAreenalla:", (j + 1));
                 for (int k = 0; k < Areena.Areenalista.Count(); k++)
                 {
                     if (Areena.Areenalista[k] != null)
                     {
-                        Console.Write("\n"+Areena.Areenalista[k].Nimi+", HP: ");
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(Areena.Areenalista[k].Hp/* +", def: "+ Areena.Areenalista[k].Def*/);
-                        Console.ResetColor();
+                        Console.Write("\n"+Areena.Areenalista[k].Nimi+", HP: ");                        
+                        Hahmo.HpVäri(Areena.Areenalista[k].Hp, Areena.Areenalista[k].MaxHp);
                         if (Areena.Areenalista[k].Puolustautunut)
-                            Console.WriteLine(" [puolustautuu]");
-
+                            Console.Write(" [puolustautuu]");
                     }
                 }
-                Console.WriteLine();
+                Console.WriteLine("\n");
                 //kierroksen alussa valitaan hahmo jolla suurin dex:
                 Hahmo vuorossa = Vuoromanageri.SuurinDex(Areena.Areenalista);
 

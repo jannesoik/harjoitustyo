@@ -11,6 +11,7 @@ namespace vuoropohjainen_taistelu.Hahmot
     {
         public string Nimi { get; set; }
         public int Hp;
+        public int MaxHp;
         public int Str;
         public int Dex;
         public int Def;
@@ -41,6 +42,7 @@ namespace vuoropohjainen_taistelu.Hahmot
                 if (Nimi.Contains("ranko"))
                 {
                     Areena.PoistaLuuranko();
+                    Pelaaja.SaaKokemusta(5);
                 }
             }
         }
@@ -108,6 +110,33 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.Write(vahinko);
                 Console.ResetColor();
             }
+        }
+
+        public static void HpVäri(int hp, int maxHp)
+        {
+            if (hp >= 15)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(hp+"/"+maxHp);
+                Console.ResetColor();
+            }
+            else if (hp > 6)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(hp + "/" + maxHp);
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write(hp + "/" + maxHp);
+                Console.ResetColor();
+            }
+
+
         }
     }
 }
