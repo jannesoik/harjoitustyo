@@ -29,7 +29,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             Console.WriteLine("Sait {0} kokemusta.", exp);
             Exp = Exp + exp;
             Console.ReadKey(true);
-            if (Exp >= 5)
+            if (Exp >= 5 && Taso <2)
             {
                 Console.Write("Nousit tasolle 2.");
                 Taso++;
@@ -37,6 +37,15 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.ResetColor();
                 Taidonnosto();
             }
+            else if (Exp >=10 && Taso <3)
+            {
+                Console.Write("Nousit tasolle 3.");
+                Taso++;
+                Console.ReadKey(true);
+                Console.ResetColor();
+                Taidonnosto();
+            }
+
             Console.ResetColor();
         }
 
@@ -84,7 +93,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             {
                 Console.Clear();
                 pelaaja.Def++;
-                Console.WriteLine("\n1Puolustusta nostettu");
+                Console.WriteLine("\nPuolustusta nostettu");
                 Console.WriteLine("   STR {0}\n   DEX {1}", pelaaja.Str, pelaaja.Dex);
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
@@ -92,6 +101,16 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.ResetColor();
             }
         }
-
+        static public void Hahmonluonti(int taitopisteet)
+        {
+            do
+            {
+                Console.WriteLine("Sinulla on {0} taitopistettä.", taitopisteet);
+                Console.ReadKey(true);
+                Taidonnosto();
+                taitopisteet--;
+            } while (taitopisteet>0);
+            Console.ReadKey(true);
+        }
     }
 }

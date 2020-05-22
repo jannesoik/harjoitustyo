@@ -39,10 +39,15 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.ResetColor();
 
                 Kuollut = true;
-                if (Nimi.Contains("ranko"))
+                if (Nimi.Contains("Heikko"))
                 {
                     Areena.PoistaLuuranko();
                     Pelaaja.SaaKokemusta(5);
+                }
+                else
+                {
+                    Areena.PoistaLuuranko();
+                    Pelaaja.SaaKokemusta(8);
                 }
             }
         }
@@ -56,7 +61,7 @@ namespace vuoropohjainen_taistelu.Hahmot
                 vahinko = 1;            
             Console.Write("{0} hyökkäsi ja teki ", Nimi);            
             VahinkoVäri(vahinko);
-            Console.Write(" vahinkoa ("+ puolustajanDef+" vastustettu)");
+            Console.Write(" vahinkoa ("+ puolustajanDef+" vastustettu)\n");
             return vahinko;
         }
 
@@ -65,7 +70,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             Random arvonta = new Random();
             int arpaNro = arvonta.Next(1, 100);
             int väistöprosentti = Dex * 5;
-            Console.WriteLine(Nimi+"n väistömahdollisuus: " + väistöprosentti+"%");
+            //Console.WriteLine(Nimi+"n väistömahdollisuus: " + väistöprosentti+"%");
             if (arpaNro <= 5 * Dex)
                 return true;
             else
@@ -135,8 +140,6 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.Write(hp + "/" + maxHp);
                 Console.ResetColor();
             }
-
-
         }
     }
 }

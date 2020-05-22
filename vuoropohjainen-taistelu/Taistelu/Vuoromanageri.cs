@@ -75,5 +75,14 @@ namespace vuoropohjainen_taistelu.Taistelu
                 Console.WriteLine("Pelaaja puolustautuu");
             }
         }
+
+        public async void ClickHandler()
+        {
+            // whatever you need to do before delay goes here         
+
+            await Task.Delay(2000);
+
+            // whatever you need to do after delay.
+        }
     }
 }

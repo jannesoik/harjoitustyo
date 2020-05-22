@@ -12,10 +12,12 @@ namespace vuoropohjainen_taistelu
     {
         static void Main(string[] args)
         {
-            Areena.LuoLuuranko(); //luo vihollinen
+            Random arvonta = new Random();
+            int luurankolukumäärä = arvonta.Next(1, 4);
+            Areena.LuoLuuranko(luurankolukumäärä); //luo vihollisia
             Areena.LuoUusiPelaaja(); // luo pelaaja
-            Hahmo pelaaja1 = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja"); 
-
+            Hahmo pelaaja1 = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja");
+            Pelaaja.Hahmonluonti(5);
             for (int j = 0; pelaaja1.Hp > 0 ; j++)//taistelu jatkuu, kunnes pelaajan hp loppuu
             {
                 if (Areena.LuurankoLista.Count < 1)
