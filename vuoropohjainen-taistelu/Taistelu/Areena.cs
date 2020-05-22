@@ -26,7 +26,7 @@ namespace vuoropohjainen_taistelu.Taistelu
                 }
                 else
                 {
-                    LuurankoLista.Add(new Luuranko("Heikko luuranko " + i + 1, 10, 2, 1, 2, 10));
+                    LuurankoLista.Add(new Luuranko("Heikko Luuranko " + i + 1, 10, 2, 4, 2, 10));
                     Areenalista.Add(LuurankoLista[i]);
                 }
                 await Task.Delay(100);

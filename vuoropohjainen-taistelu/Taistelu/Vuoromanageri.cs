@@ -17,7 +17,7 @@ namespace vuoropohjainen_taistelu.Taistelu
             for (int i = 0; i < järjestettyLista.Count; i++)
             {
                 if(järjestettyLista[i]!=null)
-                    Console.WriteLine((i+1)+". vuorossa "+järjestettyLista[i].Nimi/* + ", Dex: " + järjestettyLista[i].Dex*/);
+                    Console.WriteLine((i+1)+". vuorossa "+järjestettyLista[i].Nimi + ", Dex: " + järjestettyLista[i].Dex);
             }
             return järjestettyLista[0];
         }
@@ -37,7 +37,7 @@ namespace vuoropohjainen_taistelu.Taistelu
 
                 if (pelaaja.Väistä() == false)
                 {
-                    pelaaja.MenetäHPtä(luurankolista[i].Hyökkää(pelaaja.Def));
+                    pelaaja.MenetäHPtä(luurankolista[i].Hyökkää(pelaaja.Def, pelaaja.Nimi));
                     Console.ReadKey(true);
                 }
                 else
@@ -63,11 +63,13 @@ namespace vuoropohjainen_taistelu.Taistelu
                     break;                
             } while (nappiInfo.Key != ConsoleKey.D1);
 
+            //Hyökkäys
+            vihollinen=Pelaaja.ValitseVihollinen();
             if (nappiInfo.Key==ConsoleKey.D1 || nappiInfo.Key == ConsoleKey.NumPad1)
             {
                 if (vihollinen.Väistä()==false)
                 {
-                    vihollinen.MenetäHPtä(pelaaja.Hyökkää(vihollinen.Def));
+                    vihollinen.MenetäHPtä(pelaaja.Hyökkää(vihollinen.Def, vihollinen.Nimi));
                 }else
                     Console.WriteLine("{0} hyökkäsi, {1} väisti.", pelaaja.Nimi, vihollinen.Nimi);
             }

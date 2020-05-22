@@ -49,7 +49,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             }
         }
 
-        public int Hyökkää(int puolustajanDef)
+        public int Hyökkää(int puolustajanDef, string puolustajanNimi)
         {
             Random arvonta = new Random();
             int vahinkoKerroin = arvonta.Next(1,3);
@@ -58,13 +58,13 @@ namespace vuoropohjainen_taistelu.Hahmot
             {
                 int torjuttuVahinko = (Str * vahinkoKerroin)-1;
                 vahinko = 1;
-                Console.Write("{0} hyökkäsi ja teki ", Nimi);
+                Console.Write("{0} hyökkäsi, {1} otti vain", Nimi, puolustajanNimi);
                 VahinkoVäri(vahinko);
                 Console.Write(" vahinkoa (" + torjuttuVahinko + " vastustettu)\n");
             }
             else
             {
-                Console.Write("{0} hyökkäsi ja teki ", Nimi);
+                Console.Write("{0} hyökkäsi, {1} otti ", Nimi, puolustajanNimi);
                 VahinkoVäri(vahinko);
                 Console.Write(" vahinkoa (" + puolustajanDef + " vastustettu)\n");
             }      

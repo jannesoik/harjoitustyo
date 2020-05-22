@@ -120,5 +120,46 @@ namespace vuoropohjainen_taistelu.Hahmot
             } while (taitopisteet>0);
             Console.ReadKey(true);
         }
+
+        static public Hahmo ValitseVihollinen()
+        {
+            //Käydään areenalista läpi ja tallennetaan viholliset omaan listaansa
+            List<Hahmo> vihollislista = new List<Hahmo>();
+            for (int i = 0; i < Areena.Areenalista.Count(); i++)
+            {
+                if (Areena.Areenalista[i].Nimi != "Pelaaja")                
+                    vihollislista.Add(Areena.Areenalista[i]);
+            }            
+
+            ConsoleKeyInfo nappiInfo;
+            do
+            {
+                Console.Clear();
+                
+                Console.WriteLine("Valitse vihollinen");
+
+                for (int i = 0; i < vihollislista.Count(); i++)
+                {
+                    Console.Write("\n{1}) {0}, HP: ", vihollislista[i].Nimi, i + 1);
+                    HpVäri(vihollislista[i].Hp, vihollislista[i].MaxHp);
+                }
+
+                nappiInfo = Console.ReadKey(true);
+
+                if (vihollislista.Count()>1 && nappiInfo.Key == ConsoleKey.D2)
+                    break;
+                if (vihollislista.Count() > 2 && nappiInfo.Key == ConsoleKey.D3)
+                    break;
+
+            } while (nappiInfo.Key != ConsoleKey.D1);
+            Console.Clear();
+            if (nappiInfo.Key == ConsoleKey.D3)
+                return vihollislista[2];
+            if (nappiInfo.Key == ConsoleKey.D2)
+                return vihollislista[1];
+            else 
+                return vihollislista[0];
+
+        }
     }
 }
