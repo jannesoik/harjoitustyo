@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vuoropohjainen_taistelu.Hahmot;
 using vuoropohjainen_taistelu.Taistelu;
+using vuoropohjainen_taistelu.UI;
 
 namespace vuoropohjainen_taistelu
 {    
@@ -12,6 +13,7 @@ namespace vuoropohjainen_taistelu
     {
         static void Main(string[] args)
         {
+            Valikko.Päävalikko();
             Random arvonta = new Random();
             int luurankolukumäärä = arvonta.Next(1, 4);
             Areena.LuoLuuranko(luurankolukumäärä); //luo vihollisia

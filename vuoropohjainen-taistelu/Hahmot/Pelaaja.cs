@@ -12,6 +12,7 @@ namespace vuoropohjainen_taistelu.Hahmot
         static public int Exp;
         static public int Taso=1;
 
+
         public Pelaaja(string nimi,int hp, int str, int dex, int def, int maxHp)
         {
             this.Nimi = nimi;
@@ -24,6 +25,7 @@ namespace vuoropohjainen_taistelu.Hahmot
 
         static public void SaaKokemusta(int exp)
         {
+            Hahmo pelaaja = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja");
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Sait {0} kokemusta.", exp);
@@ -31,21 +33,24 @@ namespace vuoropohjainen_taistelu.Hahmot
             Console.ReadKey(true);
             if (Exp >= 5 && Taso <2)
             {
+                Console.Clear();
                 Console.Write("Nousit tasolle 2.");
                 Taso++;
                 Console.ReadKey(true);
                 Console.ResetColor();
+                pelaaja.MaxHp += 5;
                 Taidonnosto();
             }
             else if (Exp >=10 && Taso <3)
             {
+                Console.Clear();
                 Console.Write("Nousit tasolle 3.");
                 Taso++;
                 Console.ReadKey(true);
                 Console.ResetColor();
+                pelaaja.MaxHp += 5;
                 Taidonnosto();
             }
-
             Console.ResetColor();
         }
 
@@ -105,7 +110,10 @@ namespace vuoropohjainen_taistelu.Hahmot
         {
             do
             {
-                Console.WriteLine("Sinulla on {0} taitopistettä.", taitopisteet);
+                if(taitopisteet==1)
+                    Console.WriteLine("Sinulla on {0} taitopiste.", taitopisteet);
+                else
+                    Console.WriteLine("Sinulla on {0} taitopistettä.", taitopisteet);
                 Console.ReadKey(true);
                 Taidonnosto();
                 taitopisteet--;

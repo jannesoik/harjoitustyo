@@ -8,6 +8,7 @@ namespace vuoropohjainen_taistelu.Hahmot
 {
     public class Luuranko : Hahmo
     {
+
         public Luuranko(string nimi, int hp, int str, int dex, int def, int maxHp)
         {
             this.Nimi = nimi;
@@ -16,8 +17,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             this.Dex = dex;
             this.Def = def;
             this.MaxHp = maxHp;
-        }
-        
+        }      
 
     }
 }

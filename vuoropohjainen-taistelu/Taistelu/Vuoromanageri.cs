@@ -25,15 +25,20 @@ namespace vuoropohjainen_taistelu.Taistelu
         public static void LuurankojenVuoro(List<Luuranko> luurankolista, Hahmo pelaaja)
         {
             Console.Clear();
-
-            Console.WriteLine("\nLuurankojen vuoro");
+            if (luurankolista.Count()>1)            
+                Console.WriteLine("\nLuurankojen vuoro");           
+            else            
+                Console.WriteLine("\nLuurangon vuoro");
+            
             for (int i = 0; i < luurankolista.Count(); i++) //käydään luurankolista läpi
             {
+                if (pelaaja.Kuollut)
+                    break;
+
                 if (pelaaja.Väistä() == false)
                 {
                     pelaaja.MenetäHPtä(luurankolista[i].Hyökkää(pelaaja.Def));
                     Console.ReadKey(true);
-
                 }
                 else
                 {
@@ -45,12 +50,9 @@ namespace vuoropohjainen_taistelu.Taistelu
 
         public static void PelaajanVuoro(Hahmo pelaaja, Hahmo vihollinen)
         {
-            if (pelaaja.Puolustautunut)
-            {
-                pelaaja.LaskePuolustus(); 
-            }
+            if (pelaaja.Puolustautunut)            
+                pelaaja.LaskePuolustus();           
 
-            //Console.WriteLine("pelaajan str{0}, dex {1}, def {2} ", pelaaja.Str, pelaaja.Dex, pelaaja.Def);
             ConsoleKeyInfo nappiInfo;
             do
             {
@@ -74,15 +76,6 @@ namespace vuoropohjainen_taistelu.Taistelu
                 pelaaja.Puolusta();
                 Console.WriteLine("Pelaaja puolustautuu");
             }
-        }
-
-        public async void ClickHandler()
-        {
-            // whatever you need to do before delay goes here         
-
-            await Task.Delay(2000);
-
-            // whatever you need to do after delay.
-        }
+        }        
     }
 }

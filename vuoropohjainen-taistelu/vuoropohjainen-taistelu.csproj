@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Taistelu\Areena.cs" />
     <Compile Include="Taistelu\Vuoromanageri.cs" />
+    <Compile Include="UI\Valikko.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

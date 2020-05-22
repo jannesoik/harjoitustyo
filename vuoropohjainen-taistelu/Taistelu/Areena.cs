@@ -13,17 +13,15 @@ namespace vuoropohjainen_taistelu.Taistelu
         public static List<Hahmo> Areenalista = new List<Hahmo>();
 
         public static async void LuoLuuranko(int kpl)
-        {
-            
+        {            
             int listaNro = LuurankoLista.Count();
-
             for (int i = 0; i < kpl; i++)
             {
                 Random arvonta = new Random();
                 int taso = arvonta.Next(1, 10);
                 if (taso > 5)
                 {
-                    LuurankoLista.Add(new Luuranko("Luuranko " + i + 1, 15, 3, 6, 2, 15));
+                    LuurankoLista.Add(new Luuranko("Vahva Luuranko " + i + 1, 15, 3, 6, 2, 15));
                     Areenalista.Add(LuurankoLista[i]);
                 }
                 else
@@ -33,14 +31,14 @@ namespace vuoropohjainen_taistelu.Taistelu
                 }
                 await Task.Delay(100);
             }
-
         }
+
         public static void LuoUusiPelaaja()
         {
             Areenalista.Add(new Pelaaja("Pelaaja", 25, 1, 1, 1,25));
         }
 
-        public static void PoistaLuuranko()
+        public static void PoistaKuolleet()
         {
             for (int i = 0; i < LuurankoLista.Count; i++)
             {
@@ -51,7 +49,7 @@ namespace vuoropohjainen_taistelu.Taistelu
             {
                 if (Areenalista[i].Hp <= 0)
                     Areenalista.Remove(Areenalista[i]);
-            }
+            }            
         }
     }
 }

@@ -22,9 +22,10 @@ namespace vuoropohjainen_taistelu.Hahmot
         public void MenetäHPtä(int vahinko)
         {
             Hp = Hp - vahinko;
-            if (Hp <= 0)
+
+            if (Hp <= 0) //<-kuolema
             {
-                if (Nimi.Contains("laaja"))
+                if (Nimi.Contains("elaaja"))
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -37,18 +38,14 @@ namespace vuoropohjainen_taistelu.Hahmot
                 
                 Console.WriteLine("\n"+Nimi + " kuoli.");
                 Console.ResetColor();
-
                 Kuollut = true;
-                if (Nimi.Contains("Heikko"))
-                {
-                    Areena.PoistaLuuranko();
+
+                if (Nimi.Contains("Vahva"))                
+                    Pelaaja.SaaKokemusta(8);                
+                else if (Nimi.Contains("Heikko"))                
                     Pelaaja.SaaKokemusta(5);
-                }
-                else
-                {
-                    Areena.PoistaLuuranko();
-                    Pelaaja.SaaKokemusta(8);
-                }
+
+                Areena.PoistaKuolleet();
             }
         }
 
@@ -58,10 +55,20 @@ namespace vuoropohjainen_taistelu.Hahmot
             int vahinkoKerroin = arvonta.Next(1,3);
             int vahinko = (Str*vahinkoKerroin) - puolustajanDef;
             if (vahinko < 1)
-                vahinko = 1;            
-            Console.Write("{0} hyökkäsi ja teki ", Nimi);            
-            VahinkoVäri(vahinko);
-            Console.Write(" vahinkoa ("+ puolustajanDef+" vastustettu)\n");
+            {
+                int torjuttuVahinko = (Str * vahinkoKerroin)-1;
+                vahinko = 1;
+                Console.Write("{0} hyökkäsi ja teki ", Nimi);
+                VahinkoVäri(vahinko);
+                Console.Write(" vahinkoa (" + torjuttuVahinko + " vastustettu)\n");
+            }
+            else
+            {
+                Console.Write("{0} hyökkäsi ja teki ", Nimi);
+                VahinkoVäri(vahinko);
+                Console.Write(" vahinkoa (" + puolustajanDef + " vastustettu)\n");
+            }      
+            
             return vahinko;
         }
 
@@ -119,14 +126,14 @@ namespace vuoropohjainen_taistelu.Hahmot
 
         public static void HpVäri(int hp, int maxHp)
         {
-            if (hp >= 15)
+            if (hp*10 >= maxHp*7)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write(hp+"/"+maxHp);
                 Console.ResetColor();
             }
-            else if (hp > 6)
+            else if (hp*10 > maxHp * 3)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
