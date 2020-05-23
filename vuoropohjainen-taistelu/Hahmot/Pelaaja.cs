@@ -20,7 +20,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             this.Str = str;
             this.Dex = dex;
             this.Def = def;
-            MaxHp = maxHp;
+            this.MaxHp = maxHp;
         }
 
         static public void SaaKokemusta(int exp)
@@ -28,7 +28,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             Hahmo pelaaja = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja");
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Sait {0} kokemusta.", exp);
+            Console.WriteLine("Sait {0} kokemuspistettä.", exp);
             Exp = Exp + exp;
             Console.ReadKey(true);
             if (Exp >= 5 && Taso <2)
@@ -98,6 +98,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             {
                 Console.Clear();
                 pelaaja.Def++;
+                pelaaja.LisääHptä(pelaaja.Def, pelaaja.Hp, pelaaja.MaxHp);
                 Console.WriteLine("\nPuolustusta nostettu");
                 Console.WriteLine("   STR {0}\n   DEX {1}", pelaaja.Str, pelaaja.Dex);
                 Console.BackgroundColor = ConsoleColor.Black;

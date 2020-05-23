@@ -64,9 +64,10 @@ namespace vuoropohjainen_taistelu.Taistelu
             } while (nappiInfo.Key != ConsoleKey.D1);
 
             //Hyökkäys
-            vihollinen=Pelaaja.ValitseVihollinen();
             if (nappiInfo.Key==ConsoleKey.D1 || nappiInfo.Key == ConsoleKey.NumPad1)
             {
+                vihollinen = Pelaaja.ValitseVihollinen();
+
                 if (vihollinen.Väistä()==false)
                 {
                     vihollinen.MenetäHPtä(pelaaja.Hyökkää(vihollinen.Def, vihollinen.Nimi));

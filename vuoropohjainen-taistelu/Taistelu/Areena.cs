@@ -35,7 +35,9 @@ namespace vuoropohjainen_taistelu.Taistelu
 
         public static void LuoUusiPelaaja()
         {
-            Areenalista.Add(new Pelaaja("Pelaaja", 25, 1, 1, 1,25));
+            Areenalista.Add(new Pelaaja("Pelaaja", 5, 1, 1, 1,5));
+            Hahmo pelaaja=Areenalista.Find(item => item.Nimi == "Pelaaja");
+            pelaaja.LisääHptä(pelaaja.Def, pelaaja.Hp, pelaaja.MaxHp);
         }
 
         public static void PoistaKuolleet()

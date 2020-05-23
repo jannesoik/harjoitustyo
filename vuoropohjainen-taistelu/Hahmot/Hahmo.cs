@@ -19,6 +19,14 @@ namespace vuoropohjainen_taistelu.Hahmot
         public bool Puolustautunut;
         int puolustusDef;
 
+        public void LisääHptä(int def, int hp, int maxHp)
+        {
+            int maxHplisäys = def * 2;
+            int hplisäys = def * 2;
+            MaxHp += maxHplisäys;
+            Hp += hplisäys;
+        }
+
         public void MenetäHPtä(int vahinko)
         {
             Hp = Hp - vahinko;
@@ -58,15 +66,15 @@ namespace vuoropohjainen_taistelu.Hahmot
             {
                 int torjuttuVahinko = (Str * vahinkoKerroin)-1;
                 vahinko = 1;
-                Console.Write("{0} hyökkäsi, {1} otti vain", Nimi, puolustajanNimi);
+                Console.Write("{0} hyökkäsi, {1} otti vain ", Nimi, puolustajanNimi);
                 VahinkoVäri(vahinko);
-                Console.Write(" vahinkoa (" + torjuttuVahinko + " vastustettu)\n");
+                Console.Write(":n vanhinkopisteen (" + torjuttuVahinko + " vastustettu)\n");
             }
             else
             {
                 Console.Write("{0} hyökkäsi, {1} otti ", Nimi, puolustajanNimi);
                 VahinkoVäri(vahinko);
-                Console.Write(" vahinkoa (" + puolustajanDef + " vastustettu)\n");
+                Console.Write(" pistettä vahinkoa (" + puolustajanDef + " vastustettu)\n");
             }      
             
             return vahinko;

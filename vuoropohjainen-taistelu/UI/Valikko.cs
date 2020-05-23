@@ -13,7 +13,7 @@ namespace vuoropohjainen_taistelu.UI
             Console.WriteLine("\nTAIDOT");
             Console.WriteLine("STR - Hyökkäysvahinko");
             Console.WriteLine("DEX - Vuorojärjestys, väistömahdollisuus");
-            Console.WriteLine("DEF - Vahingonvastustus");
+            Console.WriteLine("DEF - Vahingonvastustus, kestopisteet");
             Console.WriteLine("\nKOMENNOT");
             Console.WriteLine("Hyökkää - STR-riippuvainen hyökkäys.");
             Console.WriteLine("Puolusta - Nostaa hahmon vahingonvastustusta, tehokkuus riippuu DEF-taidosta. Nostaa väistömahdollisuutta.");
@@ -41,9 +41,5 @@ namespace vuoropohjainen_taistelu.UI
                 Ohje();
             }
         }
-
-        //public static void Numerovalikko(int numeroidenLukumäärä)
-        //{
-        //}
     }
 }
