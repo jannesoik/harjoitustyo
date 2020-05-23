@@ -48,10 +48,20 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.ResetColor();
                 Kuollut = true;
 
-                if (Nimi.Contains("Vahva"))                
-                    Pelaaja.SaaKokemusta(8);                
-                else if (Nimi.Contains("Heikko"))                
+                if (Nimi.Contains("Vahva"))
+                {
+                    Pelaaja.SaaKokemusta(8);
+                    Random arvonta = new Random();
+                    if (arvonta.Next(1, 101) > 25)
+                        Pelaaja.SaaTavara("Pommi");
+                }
+                else if (Nimi.Contains("Heikko"))
+                {
                     Pelaaja.SaaKokemusta(5);
+                    Random arvonta = new Random();
+                    if (arvonta.Next(1,101) > 25)
+                        Pelaaja.SaaTavara("Pommi");
+                }
 
                 Areena.PoistaKuolleet();
             }
@@ -108,7 +118,7 @@ namespace vuoropohjainen_taistelu.Hahmot
             Puolustautunut = false;
         }
 
-        public void VahinkoVäri(int vahinko)
+        static public void VahinkoVäri(int vahinko)
         {
             if (vahinko >= 10)
             {

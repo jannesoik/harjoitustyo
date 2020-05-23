@@ -51,16 +51,18 @@ namespace vuoropohjainen_taistelu.Taistelu
         public static void PelaajanVuoro(Hahmo pelaaja, Hahmo vihollinen)
         {
             if (pelaaja.Puolustautunut)            
-                pelaaja.LaskePuolustus();           
+                pelaaja.LaskePuolustus();              
 
             ConsoleKeyInfo nappiInfo;
             do
             {
                 Console.Clear();
-                Console.WriteLine("\nPelaajan vuoro\nValitse komento: \n1) Hyökkää \n2) Puolusta");
+                Console.WriteLine("\nPelaajan vuoro\nValitse komento: \n1) Hyökkää \n2) Puolusta \n3) Tavara");
                 nappiInfo=Console.ReadKey(true);
                 if (nappiInfo.Key == ConsoleKey.D2)
-                    break;                
+                    break;
+                if (nappiInfo.Key == ConsoleKey.D3)
+                    break;
             } while (nappiInfo.Key != ConsoleKey.D1);
 
             //Hyökkäys
@@ -74,10 +76,29 @@ namespace vuoropohjainen_taistelu.Taistelu
                 }else
                     Console.WriteLine("{0} hyökkäsi, {1} väisti.", pelaaja.Nimi, vihollinen.Nimi);
             }
+            //Puolustus
             if (nappiInfo.Key == ConsoleKey.D2 || nappiInfo.Key == ConsoleKey.NumPad2)
             {
                 pelaaja.Puolusta();
                 Console.WriteLine("Pelaaja puolustautuu");
+            }
+            //Tavara
+            if (nappiInfo.Key == ConsoleKey.D3 || nappiInfo.Key == ConsoleKey.NumPad3)
+            {
+                if (Pelaaja.Tavaralista.Count()>0)
+                {
+                    Tavara valittuTavara = Pelaaja.ValitseTavara();
+                    vihollinen = Pelaaja.ValitseVihollinen();
+                    Tavara.HeitäPommi(pelaaja, vihollinen);
+                    Pelaaja.Tavaralista.Remove(valittuTavara);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Ei tavaroita.");
+                    Console.ReadKey(true);
+                    PelaajanVuoro(pelaaja, vihollinen);
+                }
             }
         }        
     }

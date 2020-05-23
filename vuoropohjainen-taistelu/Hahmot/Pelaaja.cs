@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vuoropohjainen_taistelu.Taistelu;
+using vuoropohjainen_taistelu.UI;
 
 namespace vuoropohjainen_taistelu.Hahmot
 {
@@ -11,7 +12,6 @@ namespace vuoropohjainen_taistelu.Hahmot
     {
         static public int Exp;
         static public int Taso=1;
-
 
         public Pelaaja(string nimi,int hp, int str, int dex, int def, int maxHp)
         {
@@ -21,6 +21,20 @@ namespace vuoropohjainen_taistelu.Hahmot
             this.Dex = dex;
             this.Def = def;
             this.MaxHp = maxHp;
+        }
+
+        public static List<Tavara> Tavaralista = new List<Tavara>();
+
+        static public void SaaTavara(string tavara)
+        {
+            Console.Clear();
+            Hahmo pelaaja = Areena.Areenalista.Find(item => item.Nimi == "Pelaaja");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Löysit {0}n.", tavara);
+            if (tavara == "Pommi")
+                Tavaralista.Add(new Tavara("Pommi"));
+            Console.ReadKey(true);
         }
 
         static public void SaaKokemusta(int exp)
@@ -106,11 +120,13 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Console.WriteLine("   DEF {0}", pelaaja.Def);
                 Console.ResetColor();
             }
+            Console.ReadKey(true);
         }
         static public void Hahmonluonti(int taitopisteet)
         {
             do
             {
+                Console.Clear();
                 if(taitopisteet==1)
                     Console.WriteLine("Sinulla on {0} taitopiste.", taitopisteet);
                 else
@@ -119,7 +135,6 @@ namespace vuoropohjainen_taistelu.Hahmot
                 Taidonnosto();
                 taitopisteet--;
             } while (taitopisteet>0);
-            Console.ReadKey(true);
         }
 
         static public Hahmo ValitseVihollinen()
@@ -160,7 +175,37 @@ namespace vuoropohjainen_taistelu.Hahmot
                 return vihollislista[1];
             else 
                 return vihollislista[0];
+        }
 
+        static public Tavara ValitseTavara()
+        {
+            ConsoleKeyInfo nappiInfo;
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("Valitse tavara");
+
+                for (int i = 0; i < Tavaralista.Count(); i++)
+                {
+                    Console.WriteLine("{0}) {1}", (i+1), Tavaralista[i].Nimi);
+                }
+
+                nappiInfo = Console.ReadKey(true);
+
+                if (Tavaralista.Count() > 1 && nappiInfo.Key == ConsoleKey.D2)
+                    break;
+                if (Tavaralista.Count() > 2 && nappiInfo.Key == ConsoleKey.D3)
+                    break;
+
+            } while (nappiInfo.Key != ConsoleKey.D1);
+            Console.Clear();
+            if (nappiInfo.Key == ConsoleKey.D3)
+                return Tavaralista[2];
+            if (nappiInfo.Key == ConsoleKey.D2)
+                return Tavaralista[1];
+            else
+                return Tavaralista[0];
         }
     }
 }

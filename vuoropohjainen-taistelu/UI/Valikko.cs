@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vuoropohjainen_taistelu.Taistelu;
+using vuoropohjainen_taistelu.Hahmot;
 
 namespace vuoropohjainen_taistelu.UI
 {
